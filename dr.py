@@ -1,8 +1,10 @@
 
+from __future__ import division
 import numpy as np
 import matplotlib.pyplot as pt
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
+
 
 data = pd.read_csv('datasets/train.csv').as_matrix()
 
@@ -28,7 +30,13 @@ actual_label=data[21000:,0]
 #pt.show()
 
 prediction=clf.predict(xtest)
-print(prediction)
+#print(prediction)
+
+count=0
+for i in range(0,21000):
+	if prediction[i]==actual_label[i]:
+		count+=1
+print("prediction accuracy= ",round((count/21000)*100,2))
 
 
 
